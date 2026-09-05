@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f0e9" />
+  <title>Devay IA</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-art"><div class="auth-star">D</div><p>Devay</p><span>Tu inteligencia para crear, aprender y avanzar.</span><div class="site-address">Devay-AI.com</div><button class="download-btn" id="downloadButton"><span>↓</span> Download Devay</button></div>
+    <div class="auth-card">
+      <div class="auth-logo"><span>D</span> Devay <b>IA</b></div>
+      <p class="eyebrow" id="authEyebrow">Empieza tu espacio personal</p>
+      <h1 id="authTitle">Crea tu cuenta</h1>
+      <p class="auth-intro" id="authIntro">Completa tus datos para que Devay pueda adaptar la experiencia a ti.</p>
+      <form id="signupForm" class="signup-form">
+        <label>Nombre<input id="nameInput" type="text" placeholder="¿Cómo te llamas?" autocomplete="name" required /></label>
+        <div class="form-row"><label>Contraseña<input id="passwordInput" type="password" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required /></label><label>Fecha de nacimiento<input id="birthInput" type="date" autocomplete="bday" required /></label></div>
+        <label class="consent"><input id="consentInput" type="checkbox" required /><span>Acepto los términos de uso y la política de privacidad.</span></label>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="auth-submit" type="submit">Entrar a Devay <span>↗</span></button>
+        <button class="guest-submit" id="guestButton" type="button">Continuar como invitado</button>
+        <button class="auth-switch" id="loginSwitch" type="button">Ya tengo una cuenta</button>
+      </form>
+      <form id="loginForm" class="signup-form hidden">
+        <label>Nombre<input id="loginNameInput" type="text" placeholder="Tu nombre" autocomplete="username" required /></label>
+        <label>Contraseña<input id="loginPasswordInput" type="password" placeholder="Tu contraseña" autocomplete="current-password" required /></label>
+        <p class="form-error" id="loginError" role="alert"></p>
+        <button class="auth-submit" type="submit">Iniciar sesión <span>↗</span></button>
+        <button class="auth-switch" id="signupSwitch" type="button">Crear una cuenta nueva</button>
+      </form>
+      <small class="local-note">Tus datos se quedan en este dispositivo durante esta versión de prueba.</small>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">D</span><span>Devay</span><span class="brand-tag">IA</span></div>
+      <button class="new-chat" id="newChat"><span>＋</span> Nueva conversación</button>
+      <div class="sidebar-label">Recientes</div>
+      <nav class="chat-list" id="chatList"></nav>
+      <div class="sidebar-footer">
+        <button class="side-action" id="themeToggle"><span class="action-icon">◐</span><span id="themeLabel">Modo claro</span></button>
+        <button class="profile" id="accountButton"><div class="avatar user-avatar" id="profileAvatar">P</div><div><strong id="profileName">Tu cuenta</strong><small>Plan personal</small></div><span class="more">•••</span></button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
+        <div class="model-picker"><span class="status-dot"></span><strong>Devay 1</strong><span class="pro-pill">PRO</span><span class="chevron">⌄</span></div>
+        <div class="topbar-actions"><button class="work-btn" id="workButton" aria-label="Trabajar por mí"><span>◇</span> Trabajar por mí</button><button class="call-btn" id="callButton" aria-label="Modo llamada"><span>◉</span> Modo llamada</button><button class="icon-btn" aria-label="Buscar">⌕</button><button class="icon-btn" id="moreButton" aria-label="Más opciones">•••</button></div>
+      </header>
+
+      <section class="conversation" id="conversation">
+        <div class="welcome" id="welcome">
+          <div class="welcome-orb"><span>D</span></div>
+          <p class="eyebrow">Tu espacio de ideas</p>
+          <h1>¿Qué vamos a crear<br /><em>hoy?</em></h1>
+          <p class="welcome-copy" id="welcomeCopy">Piensa en voz alta. Devay te ayuda a ordenar ideas, resolver problemas y empezar cosas nuevas.</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Dame tres ideas creativas para un proyecto personal"><span class="suggestion-icon coral">✎</span><span>Explorar ideas <small>Desbloquea tu creatividad</small></span><b>↗</b></button>
+            <button class="suggestion" data-prompt="Ayúdame a organizar mi semana de forma sencilla"><span class="suggestion-icon mint">☷</span><span>Organizar mi semana <small>Convierte planes en acción</small></span><b>↗</b></button>
+            <button class="suggestion" data-prompt="Explícame un tema difícil de forma simple"><span class="suggestion-icon yellow">◎</span><span>Aprender algo nuevo <small>Una explicación a tu medida</small></span><b>↗</b></button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <footer class="composer-wrap">
+        <form class="composer" id="composer">
+          <textarea id="promptInput" rows="1" placeholder="Escribe un mensaje..." aria-label="Mensaje"></textarea>
+          <div class="composer-tools"><button type="button" class="tool-btn" aria-label="Adjuntar archivo">⊕</button><span class="hint">Devay puede equivocarse. Comprueba la información importante.</span><button class="send-btn" id="sendButton" type="submit" aria-label="Enviar">↑</button></div>
+        </form>
+      </footer>
+    </main>
+  </div>
+  <div class="modal-layer hidden" id="modalLayer" role="presentation">
+    <section class="modal-card" id="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div class="modal-icon" id="modalIcon">D</div><p class="eyebrow" id="modalEyebrow">Devay</p><h2 id="modalTitle">Acción</h2><div class="modal-content" id="modalContent"></div><div class="modal-actions" id="modalActions"></div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
