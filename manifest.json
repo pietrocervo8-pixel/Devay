@@ -1,0 +1,17 @@
+{
+  "name": "Devay IA",
+  "short_name": "Devay",
+  "description": "Tu inteligencia para crear, aprender y avanzar.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f2eb",
+  "theme_color": "#ef765c",
+  "lang": "es",
+  "icons": [{
+    "src": "icon.svg",
+    "sizes": "any",
+    "type": "image/svg+xml",
+    "purpose": "any maskable"
+  }]
+}
